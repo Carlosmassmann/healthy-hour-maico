@@ -981,26 +981,160 @@
     }
 
     /* ─────────────────────────────────────────
-       RESPONSIVE
+       RESPONSIVE — tablet (≤ 768px)
     ───────────────────────────────────────── */
-    @media (max-width: 700px) {
-      .event-strip__inner { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 768px) {
+      /* Nav */
+      .nav { padding: 16px 20px; }
+      .nav.scrolled { padding: 12px 20px; }
+      .nav__brand { font-size: 1rem; }
+
+      /* Hero */
+      .hero__content { padding: 100px 20px 72px; }
+      .hero__title { font-size: clamp(42px, 11vw, 64px); }
+      .hero__actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .hero__actions .btn { width: 100%; justify-content: center; }
+      .hero__scroll { display: none; }
+
+      /* Event strip */
+      .event-strip__inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .event-strip__item:nth-child(2) { border-right: none; }
-      .experience__grid { grid-template-columns: 1fr; gap: 40px; }
-      .experience__badge { left: 12px; bottom: 12px; }
-      .photo-grid { grid-template-columns: 1fr; grid-template-rows: 260px 200px 200px; }
+      .event-strip__item:nth-child(3) {
+        border-top: 1px solid rgba(var(--primary-700), 0.4);
+      }
+      .event-strip__item:nth-child(4) {
+        border-top: 1px solid rgba(var(--primary-700), 0.4);
+        border-right: none;
+      }
+
+      /* Intro */
+      .intro { padding: 64px 20px; }
+
+      /* Benefits */
+      .benefits { padding: 64px 20px; }
+      .benefits__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+      /* Menu */
+      .menu-section { padding: 64px 20px; }
+
+      /* Photo grid */
+      .photo-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 200px 200px;
+      }
       .photo-grid__main { grid-row: span 1; }
+
+      /* Experience */
+      .experience { padding: 64px 20px; }
+      .experience__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .experience__visual { order: -1; }
+      .experience__img-frame { aspect-ratio: 4/3; }
+      .experience__badge { left: 12px; bottom: 12px; }
+
+      /* CTA */
+      .cta { padding: 72px 20px; }
+
+      /* Footer */
       .footer__inner { grid-template-columns: 1fr; gap: 28px; }
       .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
     }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE — mobile (≤ 480px)
+    ───────────────────────────────────────── */
     @media (max-width: 480px) {
-      .event-strip__inner { grid-template-columns: repeat(2, 1fr); }
-      .menu-item { grid-template-columns: 56px 1fr; }
-      .menu-item__price { grid-column: 2; text-align: right; margin-top: -2px; }
-      .benefits__grid { grid-template-columns: repeat(2, 1fr); }
-      .hero__pills { gap: 8px; }
-      .hero__pill { font-size: 0.6875rem; padding: 6px 14px; }
-      .drinks-card { padding: 24px 20px; }
+      /* Nav */
+      .nav { padding: 14px 16px; }
+      .nav__cta { padding: 8px 18px; font-size: 0.625rem; }
+
+      /* Hero */
+      .hero__content { padding: 90px 16px 64px; }
+      .hero__title { font-size: clamp(38px, 12vw, 52px); line-height: 0.95; }
+      .hero__subtitle { font-size: 0.625rem; letter-spacing: 0.2em; }
+      .hero__tagline { font-size: 15px; margin-top: 20px; }
+      .hero__pills { flex-wrap: wrap; gap: 8px; }
+      .hero__pill { font-size: 0.625rem; padding: 6px 12px; }
+      .hero__actions { margin-top: 32px; gap: 10px; }
+
+      /* Event strip */
+      .event-strip__item { padding: 20px 12px; }
+      .event-strip__label { font-size: 0.5rem; }
+      .event-strip__value { font-size: 0.875rem; }
+      .event-strip__value--price { font-size: 1rem; }
+
+      /* Intro */
+      .intro { padding: 52px 16px; }
+      .intro__text { font-size: 15px; }
+
+      /* Benefits */
+      .benefits { padding: 52px 16px; }
+      .benefits__grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .benefit-card { padding: 20px 14px; border-radius: 1.25rem; }
+      .benefit-card__icon { font-size: 22px; margin-bottom: 10px; }
+      .benefit-card__title { font-size: 0.875rem; }
+      .benefit-card__text { font-size: 0.75rem; }
+
+      /* Menu */
+      .menu-section { padding: 52px 16px; }
+      .menu-item {
+        grid-template-columns: 52px 1fr;
+        grid-template-rows: auto auto;
+        padding: 16px;
+        gap: 14px;
+      }
+      .menu-item__icon {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+      }
+      .menu-item__price {
+        grid-column: 2;
+        text-align: right;
+        font-size: 1rem;
+        margin-top: -2px;
+      }
+      .menu-item__name { font-size: 15px; }
+      .menu-item__desc { font-size: 0.725rem; }
+      .drinks-card { padding: 22px 18px; border-radius: 1.25rem; }
+      .drinks-card__title { font-size: 1.2rem; }
+      .drinks-list li { font-size: 0.8125rem; padding: 10px 0; }
+
+      /* Photo section */
+      .photo-section { padding: 52px 16px; }
+      .photo-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 260px 180px 180px;
+        gap: 8px;
+      }
+
+      /* Experience */
+      .experience { padding: 52px 16px; }
+      .experience__text p { font-size: 0.875rem; }
+      .experience__quote { padding: 12px 0 12px 18px; }
+      .experience__quote p { font-size: 0.9375rem; }
+      .experience__badge { left: 8px; bottom: 8px; padding: 12px 14px; }
+      .experience__badge-value { font-size: 0.875rem; }
+
+      /* Section titles */
+      .section-title { font-size: clamp(22px, 6vw, 32px); }
+
+      /* Buttons full-width in CTA */
+      .cta { padding: 60px 16px; }
+      .btn--wpp { width: 100%; max-width: 340px; }
+
+      /* Footer */
+      .footer { padding: 40px 16px 24px; }
+      .footer__inner { padding-bottom: 28px; gap: 24px; }
+      .footer__brand-desc { max-width: 100%; }
+
+      /* Tag */
+      .tag { font-size: 0.625rem; }
+      .tag::before { width: 20px; margin-right: 8px; }
     }
   </style>
 </head>
@@ -1024,7 +1158,7 @@
     <!-- Background image — event photo -->
     <div class="hero__bg">
       <img
-        src="WhatsApp Image 2026-04-08 at 15.43.14.jpeg"
+        src="Cheers in the garden sun.png"
         alt="Healthy Hour — garden da Mai.Co"
         loading="eager"
         fetchpriority="high"
