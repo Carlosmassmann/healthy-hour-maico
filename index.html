@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#1d2219" />
+  <meta name="description" content="Healthy Hour — jantar saudável toda quinta-feira, das 17h às 19h, no garden da Mai.Co Health & Spa." />
+
+  <!-- Fonts (matching maicohealthespa.com.br) -->
+  <link rel="dns-prefetch" href="https://fonts.cdnfonts.com" />
+  <link href="https://fonts.cdnfonts.com/css/laca" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <title>Healthy Hour — Mai.Co Health & Spa</title>
+
+  <style>
+    /* ─────────────────────────────────────────
+       Design Tokens — exact values from maicohealthespa.com.br
+    ───────────────────────────────────────── */
+    :root {
+      /* Primary (green palette) — stored as RGB triplets */
+      --color-primary-50:  244 246 241;
+      --color-primary-100: 227 233 221;
+      --color-primary-200: 198 212 186;
+      --color-primary-300: 159 181 141;
+      --color-primary-400: 123 148 102;
+      --color-primary-500: 112 123 93;
+      --color-primary-600: 87 97 72;
+      --color-primary-700: 70 78 58;
+      --color-primary-800: 58 64 49;
+      --color-primary-900: 49 54 43;
+      --color-primary-950: 29 34 25;
+
+      /* Secondary (gold/amber palette) */
+      --color-secondary-50:  253 250 244;
+      --color-secondary-100: 249 242 227;
+      --color-secondary-200: 242 227 195;
+      --color-secondary-300: 232 202 144;
+      --color-secondary-400: 223 178 94;
+      --color-secondary-500: 194 144 35;
+      --color-secondary-600: 158 115 27;
+
+      /* Neutral */
+      --color-neutral-50:  241 241 241;
+      --color-neutral-100: 228 228 228;
+      --color-neutral-200: 207 207 207;
+      --color-neutral-400: 155 155 155;
+      --color-neutral-700: 79 79 79;
+      --color-neutral-800: 54 54 54;
+      --color-neutral-900: 37 38 39;
+      --color-neutral-950: 26 27 28;
+
+      /* Semantic */
+      --color-bg:   rgb(var(--color-neutral-50));
+      --color-text: rgb(var(--color-neutral-900));
+
+      /* Font families */
+      --font-body:    Laca, Lato, sans-serif;
+      --font-display: 'Playfair Display', serif;
+
+      /* Border radius */
+      --radius-sm:   0.375rem;
+      --radius-md:   0.75rem;
+      --radius-lg:   1.5rem;
+      --radius-full: 9999px;
+    }
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Layout ─── */
+    .container {
+      width: 100%;
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Eyebrow tag ─── */
+    .tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgb(var(--color-primary-600));
+      border: 1px solid rgb(var(--color-primary-300));
+      border-radius: var(--radius-full);
+      padding: 4px 14px;
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      background-color: rgb(var(--color-primary-50));
+      padding: 80px 24px 72px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 5% 85%, rgba(var(--color-primary-400), 0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 55% at 95% 15%, rgba(var(--color-primary-400), 0.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero__eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgb(var(--color-primary-500));
+      margin-bottom: 24px;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 12vw, 96px);
+      font-weight: 400;
+      line-height: 1;
+      color: rgb(var(--color-primary-900));
+      letter-spacing: -0.01em;
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(13px, 2vw, 15px);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgb(var(--color-primary-600));
+      margin-top: 2px;
+    }
+
+    .hero__tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(17px, 3vw, 21px);
+      color: rgb(var(--color-primary-700));
+      margin: 28px auto 0;
+      max-width: 440px;
+      line-height: 1.5;
+    }
+
+    .hero__details {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .hero__detail {
+      padding: 0 28px;
+      text-align: center;
+      border-right: 1px solid rgb(var(--color-primary-200));
+    }
+
+    .hero__detail:last-child { border-right: none; }
+
+    .hero__detail-label {
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgb(var(--color-primary-400));
+    }
+
+    .hero__detail-value {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: rgb(var(--color-primary-800));
+      margin-top: 5px;
+    }
+
+    .hero__divider {
+      width: 48px;
+      height: 1px;
+      background: rgb(var(--color-primary-300));
+      margin: 48px auto 0;
+    }
+
+    /* ─────────────────────────────────────────
+       INTRO
+    ───────────────────────────────────────── */
+    .intro {
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .intro__body {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 2.5vw, 19px);
+      color: rgb(var(--color-neutral-700));
+      max-width: 600px;
+      margin: 0 auto 20px;
+      line-height: 1.75;
+    }
+
+    .intro__body strong {
+      font-weight: 600;
+      color: rgb(var(--color-primary-700));
+      font-style: italic;
+    }
+
+    .intro__icon {
+      font-size: 22px;
+      margin: 20px 0;
+      opacity: 0.75;
+    }
+
+    /* ─────────────────────────────────────────
+       MENU
+    ───────────────────────────────────────── */
+    .menu-section {
+      background-color: rgb(var(--color-primary-50));
+      padding: 80px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .section-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 400;
+      color: rgb(var(--color-primary-900));
+      margin-top: 14px;
+      line-height: 1.15;
+    }
+
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+      background: rgb(var(--color-neutral-50));
+      border: 1px solid rgb(var(--color-primary-100));
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 4px 24px rgba(var(--color-primary-800), 0.1);
+      transform: translateY(-1px);
+    }
+
+    .menu-item__icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background-color: rgb(var(--color-primary-800));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .menu-item__body { min-width: 0; }
+
+    .menu-item__name {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 2.5vw, 20px);
+      font-weight: 400;
+      color: rgb(var(--color-primary-900));
+      margin-bottom: 5px;
+    }
+
+    .menu-item__desc {
+      font-size: 0.8125rem;
+      color: rgb(var(--color-neutral-700));
+      line-height: 1.6;
+    }
+
+    .menu-item__desc em {
+      font-style: normal;
+      font-weight: 700;
+      color: rgb(var(--color-primary-600));
+    }
+
+    .menu-item__price {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgb(var(--color-primary-800));
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Drinks */
+    .drinks-card {
+      margin-top: 32px;
+      background: rgb(var(--color-primary-900));
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      color: rgb(var(--color-primary-100));
+    }
+
+    .drinks-card__title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .drinks-card__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .drinks-card__list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      font-size: 0.875rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(var(--color-primary-300), 0.15);
+    }
+
+    .drinks-card__list li:last-child { border-bottom: none; }
+
+    .drinks-card__list li span:last-child {
+      font-weight: 500;
+      color: rgb(var(--color-secondary-300));
+    }
+
+    /* ─────────────────────────────────────────
+       BENEFITS
+    ───────────────────────────────────────── */
+    .benefits {
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 28px;
+      margin-top: 52px;
+    }
+
+    .benefit {
+      padding: 28px 18px;
+      background: rgb(var(--color-primary-50));
+      border: 1px solid rgb(var(--color-primary-100));
+      border-radius: var(--radius-lg);
+    }
+
+    .benefit__icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .benefit__title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgb(var(--color-primary-800));
+      margin-bottom: 8px;
+    }
+
+    .benefit__text {
+      font-size: 0.8125rem;
+      color: rgb(var(--color-neutral-700));
+      line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────
+       CTA
+    ───────────────────────────────────────── */
+    .cta {
+      background-color: rgb(var(--color-primary-950));
+      padding: 88px 24px;
+      text-align: center;
+      color: rgb(var(--color-primary-100));
+    }
+
+    .cta .tag {
+      border-color: rgba(var(--color-primary-300), 0.35);
+      color: rgb(var(--color-primary-300));
+    }
+
+    .cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 5vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 18px 0 14px;
+    }
+
+    .cta__title em {
+      font-style: italic;
+      color: rgb(var(--color-secondary-300));
+    }
+
+    .cta__text {
+      font-size: 0.875rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      opacity: 0.7;
+      max-width: 460px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .btn-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: var(--radius-full);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    }
+
+    .btn-wpp:hover {
+      background: #1db954;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    }
+
+    .btn-wpp svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .cta__note {
+      margin-top: 18px;
+      font-size: 0.6875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      background-color: rgb(var(--color-primary-50));
+      padding: 36px 24px;
+      text-align: center;
+      border-top: 1px solid rgb(var(--color-primary-100));
+    }
+
+    .footer__brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgb(var(--color-primary-800));
+      letter-spacing: 0.12em;
+    }
+
+    .footer__sub {
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgb(var(--color-primary-400));
+      margin-top: 5px;
+    }
+
+    .footer__copy {
+      font-size: 0.6875rem;
+      color: rgb(var(--color-neutral-400));
+      margin-top: 18px;
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 580px) {
+      .hero__detail { padding: 0 16px; }
+
+      .menu-item {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .menu-item__price {
+        grid-column: 2;
+        text-align: right;
+        margin-top: -4px;
+      }
+
+      .drinks-card { padding: 24px 20px; }
+
+      .benefits__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 380px) {
+      .hero__details { flex-direction: column; gap: 16px; }
+      .hero__detail { border-right: none; border-bottom: 1px solid rgb(var(--color-primary-200)); padding-bottom: 16px; }
+      .hero__detail:last-child { border-bottom: none; }
+      .benefits__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Mai.Co Health &amp; Spa · Garden · Santa Cruz do Sul</p>
+
+      <h1 class="hero__title">healthy</h1>
+      <p class="hero__subtitle">Hour</p>
+
+      <p class="hero__tagline">o seu jantar às 17h, com presença.</p>
+
+      <div class="hero__details">
+        <div class="hero__detail">
+          <div class="hero__detail-label">Dia</div>
+          <div class="hero__detail-value">Quintas‑feiras</div>
+        </div>
+        <div class="hero__detail">
+          <div class="hero__detail-label">Horário</div>
+          <div class="hero__detail-value">17h — 19h</div>
+        </div>
+        <div class="hero__detail">
+          <div class="hero__detail-label">Local</div>
+          <div class="hero__detail-value">Garden Mai.Co</div>
+        </div>
+      </div>
+
+      <div class="hero__divider"></div>
+    </div>
+  </header>
+
+  <!-- ── INTRO ── -->
+  <section class="intro">
+    <div class="container">
+      <p class="intro__body">
+        Jantar mais cedo é uma das <strong>principais estratégias para longevidade.</strong>
+        No nosso compromisso com o bem-estar e saúde dos nossos clientes e parceiros,
+        oferecemos a melhor solução — com saúde e sabor.
+      </p>
+      <div class="intro__icon">🌱</div>
+      <p class="intro__body">
+        Você faz parte de um movimento, de uma comunidade de pessoas que querem
+        <strong>viver mais e melhor.</strong>
+      </p>
+      <p class="intro__body" style="margin-top: 12px; font-size: clamp(14px,2vw,16px);">
+        Uma certeza: você chegará em casa — ou retornará ao trabalho —
+        com muito mais energia vital. 🌿
+      </p>
+    </div>
+  </section>
+
+  <!-- ── MENU ── -->
+  <section class="menu-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Cardápio</span>
+        <h2 class="section-header__title">O que tem no prato</h2>
+      </div>
+
+      <div class="menu-list">
+
+        <div class="menu-item">
+          <div class="menu-item__icon">🌯</div>
+          <div class="menu-item__body">
+            <div class="menu-item__name">Wrap de frango</div>
+            <div class="menu-item__desc">
+              Base leve e nutritiva, sem glúten, formando um wrap macio e delicado.
+              Recheado com 90g de frango com creme de castanhas de rúcula.<br>
+              <em>Opção vegetariana:</em> substituição por ovos ou tofu.
+            </div>
+          </div>
+          <div class="menu-item__price">R$32</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item__icon">🥙</div>
+          <div class="menu-item__body">
+            <div class="menu-item__name">Wrap de carne de panela</div>
+            <div class="menu-item__desc">
+              Base leve e nutritiva, sem glúten, formando um wrap macio e delicado.
+              Recheado com 90g de carne de panela e rúcula.
+            </div>
+          </div>
+          <div class="menu-item__price">R$35</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item__icon">🍰</div>
+          <div class="menu-item__body">
+            <div class="menu-item__name">Bolo de cenoura delicioso</div>
+            <div class="menu-item__desc">
+              Textura leve e acolhedora a cada mordida — sempre saem pedindo a receita.
+              Sem glúten, sem lactose e com muito amor.
+            </div>
+          </div>
+          <div class="menu-item__price">R$15</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item__icon">🍫</div>
+          <div class="menu-item__body">
+            <div class="menu-item__name">Brownie Mai.Co</div>
+            <div class="menu-item__desc">
+              Para encerrar com perfeição: uma criação autoral, sem glúten e com muito sabor.
+            </div>
+          </div>
+          <div class="menu-item__price">R$18</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item__icon">🍮</div>
+          <div class="menu-item__body">
+            <div class="menu-item__name">Chia Pudding Proteico</div>
+            <div class="menu-item__desc">
+              Preparado com chia hidratada (saúde intestinal), cacau (regula o cortisol),
+              whey protein isolado de cacau e frutas vermelhas.
+            </div>
+          </div>
+          <div class="menu-item__price">R$16</div>
+        </div>
+
+      </div>
+
+      <div class="drinks-card">
+        <h3 class="drinks-card__title">bebidas</h3>
+        <ul class="drinks-card__list">
+          <li><span>Água com/sem gás</span><span>R$5</span></li>
+          <li><span>Chá</span><span>R$4</span></li>
+          <li><span>Café especial</span><span>R$8</span></li>
+          <li><span>Kombucha Bá</span><span>R$16</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BENEFITS ── -->
+  <section class="benefits">
+    <div class="container">
+      <span class="tag">Por que vir</span>
+      <h2 class="section-header__title" style="font-family: var(--font-display); font-size: clamp(26px,5vw,40px); font-weight:400; color: rgb(var(--color-primary-900)); margin-top:14px;">
+        Mais do que uma refeição
+      </h2>
+      <div class="benefits__grid">
+        <div class="benefit">
+          <div class="benefit__icon">🕔</div>
+          <div class="benefit__title">Jantar mais cedo</div>
+          <div class="benefit__text">Estratégia comprovada de longevidade. Respeite o ritmo circadiano e durma melhor.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon">🥗</div>
+          <div class="benefit__title">Comida de verdade</div>
+          <div class="benefit__text">Ingredientes funcionais, sem glúten e sem lactose. Sabor sem abrir mão da saúde.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon">🌿</div>
+          <div class="benefit__title">Energia vital</div>
+          <div class="benefit__text">Volte ao trabalho ou para casa renovado — sem aquela sensação de peso pós-refeição.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon">🤝</div>
+          <div class="benefit__title">Comunidade</div>
+          <div class="benefit__text">Esteja entre pessoas em constante evolução. Conexões que inspiram e elevam.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta">
+    <div class="container">
+      <span class="tag">Reserve seu lugar</span>
+      <h2 class="cta__title">
+        A fome chegou?<br>
+        <em>Nos vemos quinta.</em>
+      </h2>
+      <p class="cta__text">
+        Envie um WhatsApp com o seu interesse — ou simplesmente apareça
+        nas quintas-feiras entre 17h e 19h. Nosso garden estará preparado para você.
+      </p>
+
+      <!-- Substitua o número abaixo pelo WhatsApp real da Mai.Co -->
+      <a class="btn-wpp"
+         href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Healthy%20Hour%20%F0%9F%8C%BF"
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Reservar via WhatsApp
+      </a>
+
+      <p class="cta__note">Ou apareça — quinta, 17h, garden da Mai.Co</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer__brand">MAI·CO</div>
+    <div class="footer__sub">Health &amp; Spa · Nutrição, Bem-estar e Longevidade</div>
+    <p class="footer__copy">© 2026 Mai.Co Health &amp; Spa. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
